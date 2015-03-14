@@ -1,5 +1,43 @@
+//var loginPage = require('src/login');
+//var tabGroup = require('src/tabGroup');
+
+Titanium.App.Properties.setString("userAccesskey", "");
+Titanium.App.Properties.setBool("loginWithFacebook", false);
+Titanium.App.Properties.setString("deviceID", Titanium.Platform.id);
+Titanium.App.Properties.setString("plataforma", Titanium.Platform.osname);
+
+
+Titanium.App.Properties.setString("urlBaseAPI", "http://estrategias-juridicas.com/api/services/api.php");
+
+(function() {
+  //determine platform and form factor and render approproate components
+  var loginPage,
+  osName = Ti.Platform.osname;
+
+  //Define our global scope shared configuration
+  Ti.App.iotAdmin = {
+    version : Ti.App.version,
+    osName : osName,
+    //Not used right now, but ready to rock
+    //isTablet: checkTablet(osName),
+    isTablet : osName === 'ipad',
+    //Platform specific library for obtaining device resources and configuration
+    platformManager : require('/lib/platform_manager')
+    //Helper for all user and local data management activities
+    //configManager: new configClass()
+  };
+
+  if (osName == 'android') {
+    loginPage = require('/ui/android/login');
+  } else {
+    loginPage = require('/ui/ios/iphone/login');
+  }
+  var instance = new loginPage().open();
+
+})();
+
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
-Titanium.UI.setBackgroundColor('#000');
+/*Titanium.UI.setBackgroundColor('#000');
 
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();
@@ -62,3 +100,4 @@ tabGroup.addTab(tab2);
 
 // open tab group
 tabGroup.open();
+*/
