@@ -33,15 +33,17 @@ function Main () {
 	    window:win2
 	});
 
-	var label2 = Titanium.UI.createLabel({
+	var listZoneView = require('/ui/ios/iphone/thingAtRisk');
+	//var instance = new listZoneView().open();
+	/*var label2 = Titanium.UI.createLabel({
 		color:'#999',
 		text:'Statistics',
 		font:{fontSize:20,fontFamily:'Helvetica Neue'},
 		textAlign:'center',
 		width:'auto'
-	});
+	});*/
 
-	win2.add(label2);
+	win2.add(listZoneView);
 
 	/**
 	 * Dashboard - Reports
@@ -56,15 +58,10 @@ function Main () {
 	    window:win3
 	});
 
-	var label3 = Titanium.UI.createLabel({
-		color:'#999',
-		text:' Reports - Charts',
-		font:{fontSize:20,fontFamily:'Helvetica Neue'},
-		textAlign:'center',
-		width:'auto'
+	var webview3 = Ti.UI.createWebView({
+		url: '/ui/views/reportChart.html'
 	});
-
-	win3.add(label3);
+	win3.add(webview3);
 
 	tabGroup.addTab(tab1);  
 	tabGroup.addTab(tab2);
