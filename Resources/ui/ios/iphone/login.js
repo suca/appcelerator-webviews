@@ -163,8 +163,8 @@ function Login() {
 
 		connectServer({
 			url: 'http://10.100.1.154:8080/riot-core-services/api/user/login?ts=1425583436706',
-			username: 'root',
-			password: 'root',
+			username: usernameInput.value,
+			password: passwordInput.value,
 			success: function (response) {
 				Titanium.App.Properties.setString("token", response.token);
 				var tabGroup = require('/ui/ios/iphone/tabGroup');
@@ -172,7 +172,7 @@ function Login() {
 				
 			},
 			failure: function () {
-				alert("You are not register on the server...");
+				alert("Your credentials are wrong ...");
 			}
 		});
 		
