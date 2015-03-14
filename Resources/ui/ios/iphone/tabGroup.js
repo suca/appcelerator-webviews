@@ -1,54 +1,41 @@
 function Main () {
 	Titanium.UI.setBackgroundColor('#000');
 
+	/**
+	 * Hospitals
+	 */
 	var tabGroup = Titanium.UI.createTabGroup();
 	var win1 = Titanium.UI.createWindow({  
-	    title:'Tab 1',
+	    title:' Hospitals',
 	    backgroundColor:'#fff'
 	});
 	var tab1 = Titanium.UI.createTab({  
 	    icon:'KS_nav_views.png',
-	    title:'Tab 1',
+	    title:'Hospitals',
 	    window:win1
 	});
 
-	var label1 = Titanium.UI.createLabel({
-		color:'#999',
-		text:'I am Window 1 Suca',
-		font:{fontSize:20,fontFamily:'Helvetica Neue'},
-		textAlign:'center',
-		width:'auto'
+	var webview = Ti.UI.createWebView({
+		url: '/ui/views/hospitals.html'
 	});
-
-	var button = Titanium.UI.createButton({
-	   title: 'Press Me!',
-	   top: 10,
-	   width: 100,
-	   height: 50
-	});
-	button.addEventListener('click', function(e) {
-	   
-	});
-
-	win1.add(label1);
-	win1.add(button);
-
-	//
-	// create controls tab and root window
-	//
+	win1.add(webview);
+	
+	/**
+	 * Top 10 Zones
+	 */
 	var win2 = Titanium.UI.createWindow({  
-	    title:'Tab 2',
+	    title:'Things at risk',
 	    backgroundColor:'#fff'
 	});
 	var tab2 = Titanium.UI.createTab({  
 	    icon:'KS_nav_ui.png',
-	    title:'Tab 2',
+	    title:'Things at risk',
 	    window:win2
 	});
 
 	var label2 = Titanium.UI.createLabel({
 		color:'#999',
-		text:'I am Window 2 Suca',
+		text:'Statistics',
 		font:{fontSize:20,fontFamily:'Helvetica Neue'},
 		textAlign:'center',
 		width:'auto'
@@ -56,8 +43,32 @@ function Main () {
 
 	win2.add(label2);
 
+	/**
+	 * Dashboard - Reports
+	 */
+	var win3 = Titanium.UI.createWindow({  
+	    title:'Reports',
+	    backgroundColor:'#fff'
+	});
+	var tab3 = Titanium.UI.createTab({  
+	    icon:'KS_nav_ui.png',
+	    title:'Reports',
+	    window:win3
+	});
+
+	var label3 = Titanium.UI.createLabel({
+		color:'#999',
+		text:' Reports - Charts',
+		font:{fontSize:20,fontFamily:'Helvetica Neue'},
+		textAlign:'center',
+		width:'auto'
+	});
+
+	win3.add(label3);
+
 	tabGroup.addTab(tab1);  
-	tabGroup.addTab(tab2);  
+	tabGroup.addTab(tab2);
+	tabGroup.addTab(tab3);  
 
 	return tabGroup;
 }
