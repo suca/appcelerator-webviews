@@ -1,3 +1,36 @@
+function connectServer (data) {
+	var client = Ti.Network.createHTTPClient({
+	    onload : function(response) {
+			//Ti.API.info('Response ' + response);
+			if (data.success) {
+				data.success(response);
+			}
+
+			if (data.complete) {
+				data.complete(response);
+			}
+	    },
+	    onerror : function(response) {
+			if (data.failure) {
+				data.failure(response);
+			}
+
+			if (data.complete) {
+				data.complete(response);
+			}
+	    }
+    });
+
+    client.open('POST', data.url);
+    client.setRequestHeader('Accept', 'application/json, text/plain, */*');
+    client.setRequestHeader("Content-Type", "application/json");
+    client.send(JSON.stringify({
+    	"username": data.username,
+    	"password": data.password
+    }));
+
+}
+
 function Login() {
 
   var self = Ti.UI.createWindow({
@@ -126,8 +159,24 @@ function Login() {
 
     } else {
 		appLoginActivity.show();
-		var tabGroup = require('/ui/ios/iphone/tabGroup');
-		var instance = new tabGroup().open();
+		//require('/src/server');
+
+		connectServer({
+			url: 'http://10.100.1.154:8080/riot-core-services/api/user/login?ts=1425583436706',
+			username: 'root',
+			password: 'root',
+			success: function (response) {
+				Titanium.App.Properties.setString("token", response.token);
+				var tabGroup = require('/ui/ios/iphone/tabGroup');
+				var instance = new tabGroup().open();
+				
+			},
+			failure: function () {
+				alert("You are not register on the server...");
+			}
+		});
+		
+	
     }
 
   });
