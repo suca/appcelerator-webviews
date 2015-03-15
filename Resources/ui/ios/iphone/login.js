@@ -167,6 +167,7 @@ function Login() {
 			password: passwordInput.value,
 			success: function (response) {
 				Titanium.App.Properties.setString("token", response.token);
+				//Titanium.App.Properties.getString("token");
 				var tabGroup = require('/ui/ios/iphone/tabGroup');
 				var instance = new tabGroup().open();
 				

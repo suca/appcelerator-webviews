@@ -1,8 +1,5 @@
 function thinkRisk () {
-	//var win = Ti.UI.createWindow({backgroundColor: 'white'});
-
-	// Create a custom template that displays an image on the left, 
-	// then a title next to it with a subtitle below it.
+	
 	var myTemplate = {
 	    childTemplates: [
 	        {                            // Image justified left
@@ -34,19 +31,16 @@ function thinkRisk () {
 	};
 
 	var listView = Ti.UI.createListView({
-	    // Maps myTemplate dictionary to 'template' string
+	    
 	    templates: { 'template': myTemplate },
-	    // Use 'template', that is, the myTemplate dict created earlier
-	    // for all items as long as the template property is not defined for an item.
+	    
 	    defaultItemTemplate: 'template'
 	});
 	var sections = [];
 
 	var fruitSection = Ti.UI.createListSection({ headerTitle: 'Fruits / Frutas'});
 	var fruitDataSet = [
-	    // the text property of info maps to the text property of the title label
-	    // the text property of es_info maps to text property of the subtitle label
-	    // the image property of pic maps to the image property of the image view
+	    
 	    { info: {text: 'Apple'}, es_info: {text: 'Manzana'}, pic: {image: 'apple.png'}},
 	    { info: {text: 'Banana'}, es_info: {text: 'Banana'}, pic: {image: 'banana.png'}}
 	];
@@ -70,8 +64,7 @@ function thinkRisk () {
 	sections.push(grainSection);
 
 	listView.setSections(sections);
-	/*win.add(listView);
-	win.open();*/
+	
 
 
 	return listView;

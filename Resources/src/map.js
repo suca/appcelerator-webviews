@@ -1,31 +1,35 @@
-/*var viewCenter = mapCenter ? _self.transform_latlon_to_ol(mapCenter) : [ 0, 0 ];
-// define zoomLevel if this exist or is gonna set to 2
-zoomLevel = zoomLevel || 2;
-// set the min zoom level
-var minZoomLevel = 2;
-
-// set layer for the map view.
-_self.firstLayer = new ol.layer.Tile({
-    id : 1,
-    source : new ol.source.OSM()
+var attribution = new ol.Attribution({
+  html: 'Suca'
 });
 
-// set center zoom and minZoom where the map is going to be located.
-var view = new ol.View({
-    center : viewCenter,
-    zoom : zoomLevel,
-    minZoom : minZoomLevel
-});
-*/
 var map = new ol.Map({
-    target: 'map',
-    layers: [
-        new ol.layer.Tile({
-          source: new ol.source.MapQuest({layer: 'sat'})
-        })
-    ],
-    view: new ol.View({
-        center: ol.proj.transform([37.41, 8.82], 'EPSG:4326', 'EPSG:3857'),
-        zoom: 4
+  target: 'map',
+  controls: ol.control.defaults({
+    attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+      collapsible: false
     })
+  }),
+  layers: [
+    new ol.layer.Tile({
+      source: new ol.source.OSM({
+        attributions: [
+          new ol.Attribution({
+            html: ''
+          }),
+          ol.source.OSM.ATTRIBUTION
+        ],
+        url: 'http://{a-c}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png'
+      })
+    }),
+    new ol.layer.Tile({
+      source: new ol.source.XYZ({
+        attributions: [attribution],
+        url: 'http://geo.nls.uk/maps/towns/glasgow1857/{z}/{x}/{-y}.png'
+      })
+    })
+  ],
+  view: new ol.View({
+    center: [-472202, 7530279],
+    zoom: 12
+  })
 });
