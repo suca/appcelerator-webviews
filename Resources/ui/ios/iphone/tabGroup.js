@@ -132,7 +132,7 @@ function Main () {
 		url: '/ui/views/reportChart.html'
 	});
 	win3.add(webview3);
-
+	
 	tabGroup.addTab(tab1);  
 	tabGroup.addTab(tab2);
 	tabGroup.addTab(tab3);  

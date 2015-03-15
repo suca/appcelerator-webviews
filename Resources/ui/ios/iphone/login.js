@@ -162,11 +162,15 @@ function Login() {
 		//require('/src/server');
 
 		connectServer({
-			url: 'http://10.100.1.154:8080/riot-core-services/api/user/login?ts=1425583436706',
+			//url: 'http://10.100.1.154:8080/riot-core-services/api/user/login?ts=1425583436706',
+			url: 'http://one.hackiot.com:8080/riot-core-services/api/user/login?ts=1425583436706',
 			username: usernameInput.value,
 			password: passwordInput.value,
 			success: function (response) {
-				Titanium.App.Properties.setString("token", response.token);
+				//var responseText = JSON.parse(response.response.text);
+				var responseText = response.response.text;
+				Titanium.App.Properties.setString("token", responseText.token);
+				Ti.API.info(Titanium.App.Properties.getString("token"));
 				var tabGroup = require('/ui/ios/iphone/tabGroup');
 				var instance = new tabGroup().open();
 				

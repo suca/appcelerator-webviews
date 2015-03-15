@@ -27,11 +27,11 @@ Titanium.App.Properties.setString("urlBaseAPI", "http://estrategias-juridicas.co
     //configManager: new configClass()
   };
 
-  if (osName == 'android') {
-    loginPage = require('/ui/android/login');
-  } else {
+  //if (osName == 'android') {
+   // loginPage = require('/ui/android/login');
+ // } else {
     loginPage = require('/ui/ios/iphone/login');
-  }
+ // }
   var instance = new loginPage().open();
 
 })();
