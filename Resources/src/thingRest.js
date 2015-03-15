@@ -33,7 +33,7 @@ var connectServer = function (data){
     }));
 
 };
-	alert("One");
+	
 connectServer({
 	url: 'http://one.hackiot.com:8080/riot-core-services/api/thing/',
 	extra: 'parent,group,group.groupType,thingType,thingType.children,thingType',
