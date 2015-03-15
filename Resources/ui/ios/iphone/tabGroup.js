@@ -127,12 +127,58 @@ function Main () {
 	    title:'Reports',
 	    window:win3
 	});
-
+	tab3.click = function() {
+		alert("Dentro");
+		// $('#container').highcharts({
+		//         chart: {
+		//             type: 'pie',
+		//             options3d: {
+		//                 enabled: true,
+		//                 alpha: 45,
+		//                 beta: 0
+		//             }
+		//         },
+		//         title: {
+		//             text: 'Things List'
+		//         },
+		//         tooltip: {
+		//             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		//         },
+		//         plotOptions: {
+		//             pie: {
+		//                 allowPointSelect: true,
+		//                 cursor: 'pointer',
+		//                 depth: 35,
+		//                 dataLabels: {
+		//                     enabled: true,
+		//                     format: '{point.name}'
+		//                 }
+		//             }
+		//         },
+		//         series: [{
+		//             type: 'pie',
+		//             name: 'Browser share',
+		//             data: [
+		//                 ['Things 1',   45.0],
+		//                 ['Things 2',       26.8],
+		//                 {
+		//                     name: 'Things 3',
+		//                     y: 12.8,
+		//                     sliced: true,
+		//                     selected: true
+		//                 },
+		//                 ['Things 4',    8.5],
+		//                 ['Things 5',     6.2],
+		//                 ['Others',   0.7]
+		//             ]
+		//         }]
+		//     });
+	};
 	var webview3 = Ti.UI.createWebView({
 		url: '/ui/views/reportChart.html'
 	});
 	win3.add(webview3);
-
+	
 	tabGroup.addTab(tab1);  
 	tabGroup.addTab(tab2);
 	tabGroup.addTab(tab3);  

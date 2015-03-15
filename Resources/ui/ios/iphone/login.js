@@ -2,21 +2,23 @@ function connectServer (data) {
 	var client = Ti.Network.createHTTPClient({
 	    onload : function(response) {
 			//Ti.API.info('Response ' + response);
+			var json = this.responseText
 			if (data.success) {
-				data.success(response);
+				data.success(json);
 			}
 
 			if (data.complete) {
-				data.complete(response);
+				data.complete(json);
 			}
 	    },
 	    onerror : function(response) {
+	    	var json = this.responseText
 			if (data.failure) {
-				data.failure(response);
+				data.failure(json);
 			}
 
 			if (data.complete) {
-				data.complete(response);
+				data.complete(json);
 			}
 	    }
     });
@@ -162,12 +164,24 @@ function Login() {
 		//require('/src/server');
 
 		connectServer({
-			url: 'http://10.100.1.154:8080/riot-core-services/api/user/login?ts=1425583436706',
+			//url: 'http://10.100.1.154:8080/riot-core-services/api/user/login?ts=1425583436706',
+			url: 'http://one.hackiot.com:8080/riot-core-services/api/user/login?ts=1425583436706',
 			username: usernameInput.value,
 			password: passwordInput.value,
 			success: function (response) {
-				Titanium.App.Properties.setString("token", response.token);
-				//Titanium.App.Properties.getString("token");
+				var object;
+
+				if (typeof response === "string") {
+					object = JSON.parse(response);
+				} else {
+					object = response;
+				}
+
+
+				//var responseText = JSON.parse(response.response.text);
+				//var responseText = response;
+				Titanium.App.Properties.setString("token", object.token);
+				Ti.API.info(Titanium.App.Properties.getString("token"));
 				var tabGroup = require('/ui/ios/iphone/tabGroup');
 				var instance = new tabGroup().open();
 				
