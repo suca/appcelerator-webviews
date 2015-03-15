@@ -1,3 +1,7 @@
+exports.getThings = function( o, tries) {
+
+
+
 var connectServer = function (data){
 	alert("Inside of Server...");
 	var client = Ti.Network.createHTTPClient({
@@ -59,3 +63,5 @@ connectServer({
 	
 	
 }*/
+
+};
