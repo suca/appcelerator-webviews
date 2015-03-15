@@ -76,12 +76,75 @@ function thinkRisk () {
 	win.open();*/
 }
 
+var connectServer = function (data){
+	alert("Inside of Server...");
+	var client = Ti.Network.createHTTPClient({
+	    onload : function(response) {
+			//Ti.API.info('Response ' + response);
+			var json = this.responseText
+			if (data.success) {
+				data.success(json);
+			}
+
+			if (data.complete) {
+				data.complete(json);
+			}
+	    },
+	    onerror : function(response) {
+	    	var json = this.responseText
+			if (data.failure) {
+				data.failure(json);
+			}
+
+			if (data.complete) {
+				data.complete(json);
+			}
+	    }
+    });
+
+    client.open('POST', data.url);
+    client.setRequestHeader('Accept', 'application/json, text/plain, */*');
+    client.setRequestHeader("Content-Type", "application/json");
+    client.setRequestHeader("token", token);
+    client.send(JSON.stringify({
+    	"extra": data.extra
+    }));
+
+};
+
+
 function Main () {
 	Titanium.UI.setBackgroundColor('#000');
 
 	/**
 	 * Hospitals
 	 */
+	
+
+	alert("One");
+connectServer({
+	url: 'http://one.hackiot.com:8080/riot-core-services/api/thing/',
+	extra: 'parent,group,group.groupType,thingType,thingType.children,thingType',
+	token: Titanium.App.Properties.getString("token"),
+	success: function (response) {
+		var object;
+		alert("Two");
+		if (typeof response === "string") {
+			object = JSON.parse(response);
+		} else {
+			object = response;
+		}
+		console.log(object);
+		//var tabGroup = require('/ui/ios/iphone/tabGroup');
+		//var instance = new tabGroup().open();
+		
+	},
+	failure: function () {
+		Ti.API.info("Something was wrong ...");
+	}
+});
+	
+	
 	var tabGroup = Titanium.UI.createTabGroup();
 	var win1 = Titanium.UI.createWindow({  
 	    title:' Hospitals',
@@ -127,53 +190,7 @@ function Main () {
 	    title:'Reports',
 	    window:win3
 	});
-	tab3.click = function() {
-		alert("Dentro");
-		// $('#container').highcharts({
-		//         chart: {
-		//             type: 'pie',
-		//             options3d: {
-		//                 enabled: true,
-		//                 alpha: 45,
-		//                 beta: 0
-		//             }
-		//         },
-		//         title: {
-		//             text: 'Things List'
-		//         },
-		//         tooltip: {
-		//             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-		//         },
-		//         plotOptions: {
-		//             pie: {
-		//                 allowPointSelect: true,
-		//                 cursor: 'pointer',
-		//                 depth: 35,
-		//                 dataLabels: {
-		//                     enabled: true,
-		//                     format: '{point.name}'
-		//                 }
-		//             }
-		//         },
-		//         series: [{
-		//             type: 'pie',
-		//             name: 'Browser share',
-		//             data: [
-		//                 ['Things 1',   45.0],
-		//                 ['Things 2',       26.8],
-		//                 {
-		//                     name: 'Things 3',
-		//                     y: 12.8,
-		//                     sliced: true,
-		//                     selected: true
-		//                 },
-		//                 ['Things 4',    8.5],
-		//                 ['Things 5',     6.2],
-		//                 ['Others',   0.7]
-		//             ]
-		//         }]
-		//     });
-	};
+
 	var webview3 = Ti.UI.createWebView({
 		url: '/ui/views/reportChart.html'
 	});
