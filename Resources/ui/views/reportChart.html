@@ -17,6 +17,27 @@
 
 		<script type="text/javascript">
 			function dataCharts(data) {
+				//console.log(data);
+				//var data = JSON.parse(data);
+				// $.ajax({
+				// 	headers: {
+				// 	'Accept' : "application/json, text/plain, */*",
+				// 	"Content-Type": "application/json;charset=utf-8",
+				// 	"apiKey": data.apiKey
+				// 	},
+				// 	url: data.url,
+				// 	method: data.method,
+				// 	data: {},
+				// 	onSucess: function (a, b, c) {
+				// 		console.log(a);
+				// 		alert("LLego");
+				// 	},
+				// 	onFailure: function (a, b, c) {
+				// 		console.log(a);
+				// 		alert("No LLego");
+				// 	}
+				// });
+
 				$('#container').highcharts(JSON.parse(data)); 
 			}
 		</script>

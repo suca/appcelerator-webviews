@@ -38,27 +38,27 @@ function thinkRisk () {
 	});
 	var sections = [];
 
-	var fruitSection = Ti.UI.createListSection({ headerTitle: 'Fruits / Frutas'});
+	var fruitSection = Ti.UI.createListSection({ headerTitle: 'Caja Petrolera - Calle Potosi'});
 	var fruitDataSet = [
 	    
-	    { info: {text: 'Apple'}, es_info: {text: 'Manzana'}, pic: {image: 'apple.png'}},
-	    { info: {text: 'Banana'}, es_info: {text: 'Banana'}, pic: {image: 'banana.png'}}
+	    { info: {text: 'Zone 1 '}, es_info: {text: 'Zone 1'}, pic: {image: ''}},
+	    { info: {text: 'Zone 2'}, es_info: {text: 'Zone 1'}, pic: {image: ''}}
 	];
 	fruitSection.setItems(fruitDataSet);
 	sections.push(fruitSection);
 
-	var vegSection = Ti.UI.createListSection({ headerTitle: 'Vegetables / Verduras'});
+	var vegSection = Ti.UI.createListSection({ headerTitle: 'Caja Petrolera - 6 de Agosto'});
 	var vegDataSet = [
-	    { info: {text: 'Carrot'}, es_info: {text: 'Zanahoria'}, pic: {image: 'carrot.png'}},
-	    { info: {text: 'Potato'}, es_info: {text: 'Patata'}, pic: {image: 'potato.png'}}
+	    { info: {text: 'Zone 3'}, es_info: {text: 'Zone 3'}, pic: {image: ''}},
+	    { info: {text: 'Zone 3'}, es_info: {text: 'Zone 3'}, pic: {image: ''}}
 	];
 	vegSection.setItems(vegDataSet);
 	sections.push(vegSection);
 
-	var grainSection = Ti.UI.createListSection({ headerTitle: 'Grains / Granos'});
+	var grainSection = Ti.UI.createListSection({ headerTitle: 'Caja Petrolera - Obrajes'});
 	var grainDataSet = [
-	    { info: {text: 'Corn'}, es_info: {text: 'Maiz'}, pic: {image: 'corn.png'}},
-	    { info: {text: 'Rice'}, es_info: {text: 'Arroz'}, pic: {image: 'rice.png'}}
+	    { info: {text: 'Zone 5'}, es_info: {text: 'Zone 5'}, pic: {image: ''}},
+	    { info: {text: 'Zone 6'}, es_info: {text: 'Zone 5'}, pic: {image: ''}}
 	];
 	grainSection.setItems(grainDataSet);
 	sections.push(grainSection);

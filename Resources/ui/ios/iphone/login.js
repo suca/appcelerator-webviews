@@ -81,8 +81,8 @@ function Login() {
     right : 15,
     left : 15,
     //height : 166,
-    height : 181,
-    top : 240
+    height : 220,
+    top : 260
   });
 
   self.add(viewBackgroundLogin);
@@ -92,7 +92,7 @@ function Login() {
     right : 26,
     left : 26,
     //top : 200,
-    top : 251,
+    top : 280,
     borderStyle : Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
     hintText : "username",
     paddingLeft : 10,
@@ -113,7 +113,7 @@ function Login() {
     right : 26,
     left : 26,
     //top : 250,
-    top : 301,
+    top : 341,
     borderStyle : Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
     hintText : 'password',
     paddingLeft : 10,
@@ -134,7 +134,7 @@ function Login() {
     right : 26,
     left : 26,
     //top : 300,
-    top : 353,
+    top : 393,
     //backgroundImage : '/images/iphone/boton_entrar.png',
     backgroundImage : '/images/iphone/boton_verde.png',
     activity : appLoginActivity
@@ -163,7 +163,7 @@ function Login() {
 		appLoginActivity.show();
 		//require('/src/server');
 
-		connectServer({
+		/*connectServer({
 			//url: 'http://10.100.1.154:8080/riot-core-services/api/user/login?ts=1425583436706',
 			url: 'http://one.hackiot.com:8080/riot-core-services/api/user/login?ts=1425583436706',
 			username: usernameInput.value,
@@ -181,15 +181,16 @@ function Login() {
 				//var responseText = JSON.parse(response.response.text);
 				//var responseText = response;
 				Titanium.App.Properties.setString("token", object.token);
-				Ti.API.info(Titanium.App.Properties.getString("token"));
+				Titanium.App.Properties.setString("apiKey", object.apiKey);
+				Ti.API.info(Titanium.App.Properties.getString("token"));*/
 				var tabGroup = require('/ui/ios/iphone/tabGroup');
 				var instance = new tabGroup().open();
 				
-			},
+		/*	},
 			failure: function () {
 				alert("Your credentials are wrong ...");
 			}
-		});
+		});*/
 		
 	
     }
@@ -199,7 +200,7 @@ function Login() {
   var signUpBt = Ti.UI.createButton({
     height : 20,
     //top : 360,
-    top : 393,
+    top : 423,
     right : 26,
     color : '#FFFFFF',
     font : {
@@ -208,7 +209,7 @@ function Login() {
     textAlign : Titanium.UI.TEXT_ALIGNMENT_RIGHT,
     title : "Register"
   });
-  self.add(signUpBt);
+  //self.add(signUpBt);
 
   signUpBt.addEventListener('click', function(e) {
   	Ti.API.info('Register');
@@ -227,7 +228,7 @@ function Login() {
     bottom : 9
   });
 
-  self.add(viewBackgroundFacebook);
+  //self.add(viewBackgroundFacebook);
     
   var activityIndicator = Ti.UI.createActivityIndicator({
     right : 0
