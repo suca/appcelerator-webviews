@@ -1,9 +1,8 @@
-AppCelerator App 
-================
+# AppCelerator App 
 
 
-Dependencies
-------------
+
+## Dependencies
 
 1. Jquery
 2. OpenLayers
@@ -22,8 +21,7 @@ Other way
 *  In your Titanium Studio go to File > Import > Git > Git Repository as New Project
 
 
-Getting Started
----------------	
+## Getting Started	
 
 Select the project on your files tree and Run
 
